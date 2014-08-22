@@ -51,6 +51,18 @@ class ZipTaxClient(object):
 
     def process_response(self, resp, multiple_rates):
         """ Get the tax rate from the ZipTax response """
+        self._check_for_exceptions(resp, multiple_rates)
+
+        rates = {}
+        for result in resp['results']:
+            rate = self._cast_tax_rate(result['taxSales'])
+            rates[result['geoCity']] = rate
+        if not multiple_rates:
+            return rates[rates.keys()[0]]
+        return rates
+
+    def _check_for_exceptions(self, resp, multiple_rates):
+        """ Check if there are exceptions that should be raised """
         if resp['rCode'] != 100:
             raise exceptions.get_exception_for_code(resp['rCode'])(resp)
 
@@ -63,14 +75,6 @@ class ZipTaxClient(object):
             if len(set(rates)) != 1:
                 raise exceptions.ZipTaxMultipleResults('Multiple results found but requested only one')
 
-        if multiple_rates:
-            rates = {}
-            for result in results:
-                rate = result['taxSales']
-                rate = (Decimal(rate) * 100).quantize(Decimal('0.001'))
-                rates[result['geoCity']] = float(rate)
-            return rates
-        else:
-            rate = results[0]['taxSales']
-            rate = (Decimal(rate) * 100).quantize(Decimal('0.001'))
-            return rate
+    def _cast_tax_rate(self, raw_rate):
+        """ Converts the tax rate from ZipTax into a decimal """
+        return (Decimal(raw_rate) * 100).quantize(Decimal('0.001'))

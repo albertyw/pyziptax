@@ -4,6 +4,7 @@ import unittest
 from mock import patch
 
 from pyziptax.ziptax import ZipTaxClient
+from pyziptax import exceptions
 
 class ZipTaxTest(unittest.TestCase):
     @patch('pyziptax.ziptax.requests')
@@ -40,5 +41,30 @@ class ZipTaxMakeRequestTest(unittest.TestCase):
         self.assertEqual(data['postalcode'], '12345')
 
 class ZipTaxProcessResponseTest(unittest.TestCase):
+    def setUp(self):
+        self.correctData = {
+            'rCode': 100,
+            'results': [{'taxSales': 0.08}]
+        }
+        self.client = ZipTaxClient('asdf')
+
+    def test_invalid_key(self):
+        """ Raises an error if a non-100 response code is returned """
+        self.correctData['rCode'] = 101
+        with self.assertRaises(exceptions.ZipTaxInvalidKey):
+            self.client.process_response(self.correctData, False)
+
+    def test_no_results(self):
+        """ Raises an error if there are no results returned """
+        self.correctData['results'] = []
+        with self.assertRaises(exceptions.ZipTaxNoResults):
+            self.client.process_response(self.correctData, False)
+
+    def test_multiple_rates(self):
+        """ Raises an error if multiple results are returned but requested one """
+        self.correctData['results'].append({'taxSales': 0.07})
+        with self.assertRaises(exceptions.ZipTaxMultipleResults):
+            self.client.process_response(self.correctData, False)
+
     def test_process_response(self):
         pass

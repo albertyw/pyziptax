@@ -7,9 +7,7 @@ from decimal import Decimal
 
 import requests
 
-
-class ZipTaxFailure(Exception):
-    pass
+from pyziptax import exceptions
 
 
 class ZipTaxClient(object):
@@ -54,18 +52,16 @@ class ZipTaxClient(object):
     def process_response(self, resp, multiple_rates):
         """ Get the tax rate from the ZipTax response """
         if resp['rCode'] != 100:
-            # invalid something here
-            raise ZipTaxFailure(
-                'invalid request: return code is %s' % resp['rCode'])
+            raise exceptions.get_exception_for_code(resp['rCode'])(resp)
 
         results = resp['results']
         if len(results) == 0:
-            raise ZipTaxFailure('No results found for params %s' % data)
+            raise exceptions.ZipTaxNoResults('No results found')
         if len(results) > 1 and not multiple_rates:
             # It's fine if all the taxes are the same
             rates = [result['taxSales'] for result in results]
             if len(set(rates)) != 1:
-                raise ZipTaxFailure('Multiple results found for params %s' % data)
+                raise exceptions.ZipTaxMultipleResults('Multiple results found but requested only one')
 
         if multiple_rates:
             rates = {}

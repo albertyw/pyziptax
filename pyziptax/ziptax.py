@@ -1,4 +1,10 @@
+"""
+This module contains the code to make requests to Ziptax to fetch tax rates
+for a given address
+"""
+
 from decimal import Decimal
+
 import requests
 
 
@@ -17,28 +23,35 @@ class ZipTaxClient(object):
         Finds sales tax for given info.
         Returns Decimal of the tax rate, e.g. 8.750.
         """
-        make_request_data(zipcode, city, state)
+        data = self.make_request_data(zipcode, city, state)
 
         r = requests.get(self.url, params=data)
         resp = r.json()
 
-        return process_response(resp, multiple_rates)
+        return self.process_response(resp, multiple_rates)
 
-    def make_request_data(zipcode, city, state):
+    def make_request_data(self, zipcode, city, state):
         """ Make the request params given location data """
-        # Ziptax doesn't like 4 digit zip code extensions, strip them
-        zipcode = str(zipcode)
-        if len(zipcode) > 5:
-            zipcode = zipcode[:5]
-
-        data = {'key': self.api_key, 'postalcode': zipcode}
-        if city is not None:
-            data['city'] = city
-        if state is not None:
-            data['state'] = state
+        data = {'key': self.api_key,
+                'postalcode': str(zipcode),
+                'city': city,
+                'state': state
+        }
+        data = ZipTaxClient._clean_request_data(data)
         return data
 
-    def process_response(resp, multiple_rates):
+    @staticmethod
+    def _clean_request_data(data):
+        """ Remove empty values, and clean data """
+        # Ziptax doesn't like 4 digit zip code extensions, strip them
+        data['postalcode'] = data['postalcode'][:5]
+        if not data['city']:
+            del data['city']
+        if not data['state']:
+            del data['state']
+        return data
+
+    def process_response(self, resp, multiple_rates):
         """ Get the tax rate from the ZipTax response """
         if resp['rCode'] != 100:
             # invalid something here

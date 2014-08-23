@@ -4,7 +4,6 @@ import unittest
 from mock import patch, MagicMock
 
 import pyziptax
-from pyziptax import ZipTaxClient, exceptions
 
 
 class ZipTaxTestBase(unittest.TestCase):
@@ -17,18 +16,19 @@ class ZipTaxTestBase(unittest.TestCase):
             }],
         }
         pyziptax.api_key = 'asdf'
-        self.client = ZipTaxClient()
+        self.client = pyziptax.ZipTaxClient()
 
-
-class ZipTaxTest(ZipTaxTestBase):
+class GetRateTest(ZipTaxTestBase):
     @patch('pyziptax.ziptax.requests')
     def test_get_rate(self, mock_requests):
         """ Can get the tax rate """
         mock_requests.get().json.return_value = self.correctData
-        tax_rate = self.client.get_rate('12345')
-        self.assertEqual(mock_requests.get.call_args[0][0], ZipTaxClient.url)
+        tax_rate = pyziptax.get_rate('12345', 'San Francisco', 'California', False)
+        self.assertEqual(mock_requests.get.call_args[0][0], self.client.url)
         self.assertEqual(mock_requests.get.call_args[1]['params']['key'], 'asdf')
         self.assertEqual(mock_requests.get.call_args[1]['params']['postalcode'], '12345')
+        self.assertEqual(mock_requests.get.call_args[1]['params']['city'], 'San Francisco')
+        self.assertEqual(mock_requests.get.call_args[1]['params']['state'], 'California')
         self.assertEqual(tax_rate, decimal.Decimal('8.000'))
 
 
@@ -57,19 +57,19 @@ class ZipTaxCheckForExceptions(ZipTaxTestBase):
     def test_invalid_key(self):
         """ Raises an error if a non-100 response code is returned """
         self.correctData['rCode'] = 101
-        with self.assertRaises(exceptions.ZipTaxInvalidKey):
+        with self.assertRaises(pyziptax.ZipTaxInvalidKey):
             self.client._check_for_exceptions(self.correctData, False)
 
     def test_no_results(self):
         """ Raises an error if there are no results returned """
         self.correctData['results'] = []
-        with self.assertRaises(exceptions.ZipTaxNoResults):
+        with self.assertRaises(pyziptax.ZipTaxNoResults):
             self.client._check_for_exceptions(self.correctData, False)
 
     def test_multiple_rates(self):
         """ Raises an error if multiple results are returned but requested one """
         self.correctData['results'].append({'taxSales': 0.07})
-        with self.assertRaises(exceptions.ZipTaxMultipleResults):
+        with self.assertRaises(pyziptax.ZipTaxMultipleResults):
             self.client._check_for_exceptions(self.correctData, False)
 
     def test_multiple_duplicate_rates(self):

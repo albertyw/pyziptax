@@ -9,12 +9,14 @@ import requests
 
 from pyziptax import exceptions
 
+def get_rate(zipcode, city=None, state=None, multiple_rates=False):
+    client = ZipTaxClient()
+    return client.get_rate(zipcode, city, state, multiple_rates)
 
 class ZipTaxClient(object):
-    url = 'http://api.zip-tax.com/request/v20'
-
     def __init__(self):
-        from pyziptax import api_key
+        from pyziptax import api_key, url
+        self.url = url
         self.api_key = api_key
         if not self.api_key:
             raise exceptions.ZipTaxInvalidKey("No Zip-Tax.com key was given")

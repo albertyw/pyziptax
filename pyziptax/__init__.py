@@ -1,4 +1,7 @@
+# Settings
 api_key = None
+url = 'http://api.zip-tax.com/request/v20'
 
-from ziptax import ZipTaxClient
-import exceptions
+# Imports
+from ziptax import ZipTaxClient, get_rate
+from exceptions import *

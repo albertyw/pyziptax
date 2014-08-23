@@ -3,6 +3,7 @@ import unittest
 
 from mock import patch, MagicMock
 
+import pyziptax
 from pyziptax import ZipTaxClient, exceptions
 
 
@@ -15,7 +16,8 @@ class ZipTaxTestBase(unittest.TestCase):
                 'geoCity': 'San Francisco',
             }],
         }
-        self.client = ZipTaxClient('asdf')
+        pyziptax.api_key = 'asdf'
+        self.client = ZipTaxClient()
 
 
 class ZipTaxTest(ZipTaxTestBase):

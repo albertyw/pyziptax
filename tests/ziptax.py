@@ -3,8 +3,7 @@ import unittest
 
 from mock import patch, MagicMock
 
-from pyziptax.ziptax import ZipTaxClient
-from pyziptax import exceptions
+from pyziptax import ZipTaxClient, exceptions
 
 
 class ZipTaxTestBase(unittest.TestCase):

@@ -23,12 +23,12 @@ class GetRateTest(ZipTaxTestBase):
     def test_get_rate(self, mock_requests):
         """ Can get the tax rate """
         mock_requests.get().json.return_value = self.correctData
-        tax_rate = pyziptax.get_rate('12345', 'San Francisco', 'California', False)
+        tax_rate = pyziptax.get_rate('12345', 'San Francisco', 'CA', False)
         self.assertEqual(mock_requests.get.call_args[0][0], self.client.url)
         self.assertEqual(mock_requests.get.call_args[1]['params']['key'], 'asdf')
         self.assertEqual(mock_requests.get.call_args[1]['params']['postalcode'], '12345')
         self.assertEqual(mock_requests.get.call_args[1]['params']['city'], 'San Francisco')
-        self.assertEqual(mock_requests.get.call_args[1]['params']['state'], 'California')
+        self.assertEqual(mock_requests.get.call_args[1]['params']['state'], 'CA')
         self.assertEqual(tax_rate, decimal.Decimal('8.000'))
 
 

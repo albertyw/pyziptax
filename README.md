@@ -9,12 +9,19 @@ Installation
 
 Usage Example
 -------------
-```
-import decimal
+```python
 import pyziptax
-client = pyziptax.ZipTaxClient(ZIPTAX_KEY)
-rate = client.get_rate('10000', 'new_york_city', 'NY')
+
+# Single Tax Rate
+pyziptax.api_key = ZIPTAX_KEY
+rate = pyziptax.get_rate('10001', 'New York', 'NY')
+# import decimal
 # rate == decimal.Decimal('8.875')
+
+# Multiple Tax Rates
+pyziptax.api_key = ZIPTAX_KEY
+rate = pyziptax.get_rate('94304', multiple_rates=True)
+# rate == {u'LOCKHEED': Decimal('8.250'), u'PALO ALTO': Decimal('8.750')}
 ```
 
 ZipTaxClient Parameters

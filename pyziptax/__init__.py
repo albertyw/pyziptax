@@ -1,4 +1,5 @@
 # Settings
+VERSION = '1.0'
 api_key = None
 url = 'http://api.zip-tax.com/request/v20'
 

@@ -113,5 +113,5 @@ class ZipTaxProcessResponse(ZipTaxTestBase):
 class ZipTaxCastTaxRate(ZipTaxTestBase):
     def test_tax_casting(self):
         """ Casts tax rates correctly """
-        rate = self.client._cast_tax_rate(0.08875)
+        rate = pyziptax.ZipTaxClient._cast_tax_rate(0.08875)
         self.assertEqual(rate, decimal.Decimal('8.8750'))

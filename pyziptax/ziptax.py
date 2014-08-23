@@ -60,7 +60,7 @@ class ZipTaxClient(object):
 
         rates = {}
         for result in resp['results']:
-            rate = self._cast_tax_rate(result['taxSales'])
+            rate = ZipTaxClient._cast_tax_rate(result['taxSales'])
             rates[result['geoCity']] = rate
         if not multiple_rates:
             return rates[rates.keys()[0]]
@@ -80,6 +80,7 @@ class ZipTaxClient(object):
             if len(set(rates)) != 1:
                 raise exceptions.ZipTaxMultipleResults('Multiple results found but requested only one')
 
-    def _cast_tax_rate(self, raw_rate):
+    @staticmethod
+    def _cast_tax_rate(raw_rate):
         """ Converts the tax rate from ZipTax into a decimal """
         return (Decimal(raw_rate) * 100).quantize(Decimal('0.001'))

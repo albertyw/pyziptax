@@ -1,6 +1,5 @@
 #/usr/bin/env python
 from setuptools import setup
-from pyziptax import VERSION
 
 try:
     readme = open("README.md")
@@ -10,7 +9,7 @@ finally:
 
 setup(
     name='pyziptax',
-    version=VERSION,
+    version='1.0',
     description='Python API for accessing sales tax information from Zip-Tax.com',
     long_description=long_description,
     author='Albert Wang',

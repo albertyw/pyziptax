@@ -14,7 +14,7 @@ setup(
     long_description=long_description,
     author='Albert Wang',
     author_email='aywang31@gmail.com',
-    url='http://github.com/zerocater/pyziptax',
+    url='http://github.com/albertyw/pyziptax',
     packages=['pyziptax', ],
     install_requires=[
         'requests>=1.1.0',

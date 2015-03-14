@@ -21,4 +21,7 @@ setup(
     ],
     license='Apache',
     test_suite="tests",
+    tests_require=[
+        'mock>=1.0.1',
+    ],
 )

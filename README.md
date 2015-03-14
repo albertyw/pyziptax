@@ -1,6 +1,8 @@
 pyziptax
 ========
 
+[ ![Codeship Status for albertyw/pyziptax](https://codeship.com/projects/ac619bb0-acba-0132-14f9-4e5346bb67f3/status?branch=master)](https://codeship.com/projects/68576)
+
 Python API for Zip-Tax.com
 
 Installation
@@ -33,3 +35,15 @@ ZipTaxClient Parameters
  - `multiple_rates` - If `True`, returns a dictionary of city names to tax rates;
                       If `False`, returns just the tax rate, but raises a
                       ZipTaxFailure if multiple rates were returned.
+
+Development
+-----------
+Pull requests welcome!
+
+```shell
+# Set up repository for development
+python setup.py develop
+
+# Run tests
+python setup.py test
+```

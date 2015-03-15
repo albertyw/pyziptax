@@ -1,6 +1,9 @@
 pyziptax
 ========
 
+[![Latest Version](https://pypip.in/version/pyziptax/badge.svg)](https://pypi.python.org/pypi/pyziptax/)
+[![License](https://pypip.in/license/pyziptax/badge.svg)](https://pypi.python.org/pypi/pyziptax/)
+
 [ ![Codeship Status for albertyw/pyziptax](https://codeship.com/projects/ac619bb0-acba-0132-14f9-4e5346bb67f3/status?branch=master)](https://codeship.com/projects/68576)
 
 Python API for Zip-Tax.com

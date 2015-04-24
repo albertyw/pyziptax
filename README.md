@@ -6,6 +6,7 @@ pyziptax
 
 [ ![Codeship Status for albertyw/pyziptax](https://codeship.com/projects/ac619bb0-acba-0132-14f9-4e5346bb67f3/status?branch=master)](https://codeship.com/projects/68576)
 [![Dependency Status](https://gemnasium.com/albertyw/pyziptax.svg)](https://gemnasium.com/albertyw/pyziptax)
+[![Code Climate](https://codeclimate.com/github/albertyw/pyziptax/badges/gpa.svg)](https://codeclimate.com/github/albertyw/pyziptax)
 
 Python API for Zip-Tax.com
 

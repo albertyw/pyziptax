@@ -2,7 +2,7 @@
 from setuptools import setup
 
 try:
-    readme = open("README.md")
+    readme = open("README.rst")
     long_description = str(readme.read())
 finally:
     readme.close()

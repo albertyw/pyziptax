@@ -63,7 +63,7 @@ class ZipTaxClient(object):
             rate = ZipTaxClient._cast_tax_rate(result['taxSales'])
             rates[result['geoCity']] = rate
         if not multiple_rates:
-            return rates[rates.keys()[0]]
+            return rates[list(rates.keys())[0]]
         return rates
 
     def _check_for_exceptions(self, resp, multiple_rates):

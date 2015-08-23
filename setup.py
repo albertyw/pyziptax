@@ -24,4 +24,15 @@ setup(
     tests_require=[
         'mock>=1.0.1',
     ],
+    classifiers=[
+        'Development Status :: 5 - Production/Stable',
+        'Environment :: Console',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: Apache Software License',
+        'Natural Language :: English',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2.7',
+        'Topic :: Software Development :: Localization',
+        'Topic :: Office/Business :: Financial :: Accounting',
+    ],
 )

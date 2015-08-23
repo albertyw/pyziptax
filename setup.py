@@ -23,6 +23,7 @@ setup(
     test_suite="tests",
     tests_require=[
         'mock>=1.0.1',
+        'tox',
     ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',

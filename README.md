@@ -47,8 +47,14 @@ Pull requests welcome!
 
 ```shell
 # Set up repository for development
-python setup.py develop
+pip install tox
+python setup.py install
 
 # Run tests
-python setup.py test
+tox
+```
+
+To update PyPI:
+```shell
+python setup.py sdist upload
 ```

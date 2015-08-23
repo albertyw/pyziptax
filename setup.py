@@ -9,7 +9,7 @@ finally:
 
 setup(
     name='pyziptax',
-    version='1.0',
+    version='1.1',
     description='Python API for accessing sales tax information from Zip-Tax.com',
     long_description=long_description,
     author='Albert Wang',

@@ -63,9 +63,9 @@ To update PyPI:
 
     python setup.py sdist upload
 
-.. |Latest Version| image:: https://pypip.in/version/pyziptax/badge.svg
+.. |Latest Version| image:: https://img.shields.io/pypi/v/pyziptax.svg
    :target: https://pypi.python.org/pypi/pyziptax/
-.. |License| image:: https://pypip.in/license/pyziptax/badge.svg
+.. |License| image:: https://img.shields.io/pypi/l/pyziptax.svg
    :target: https://pypi.python.org/pypi/pyziptax/
 .. |Codeship Status for albertyw/pyziptax| image:: https://codeship.com/projects/ac619bb0-acba-0132-14f9-4e5346bb67f3/status?branch=master
    :target: https://codeship.com/projects/68576

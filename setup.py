@@ -7,14 +7,19 @@ try:
 finally:
     readme.close()
 
+version = '1.2'
+download_url = "https://githubcom/albertyw/python-mailgun2/archive/%s.tar.gz" % version
+
 setup(
     name='pyziptax',
-    version='1.2',
+    version=version,
     description='Python API for accessing sales tax information from Zip-Tax.com',
     long_description=long_description,
     author='Albert Wang',
     author_email='aywang31@gmail.com',
     url='http://github.com/albertyw/pyziptax',
+    download_url=download_url
+    keywords=['tax', 'ziptax'],
     packages=['pyziptax', ],
     install_requires=[
         'requests>=1.1.0',

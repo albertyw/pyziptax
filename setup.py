@@ -18,7 +18,7 @@ setup(
     author='Albert Wang',
     author_email='aywang31@gmail.com',
     url='http://github.com/albertyw/pyziptax',
-    download_url=download_url
+    download_url=download_url,
     keywords=['tax', 'ziptax'],
     packages=['pyziptax', ],
     install_requires=[

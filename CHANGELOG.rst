@@ -1,3 +1,11 @@
+v1.2.1
+======
+
+ - Switch to proper semantic versioning
+ - Support python 3.5 and 3.6
+ - Minor updates for packaging
+
+
 1.2
 ===
 

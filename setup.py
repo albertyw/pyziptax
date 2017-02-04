@@ -7,8 +7,8 @@ try:
 finally:
     readme.close()
 
-version = '1.2'
-download_url = "https://githubcom/albertyw/python-mailgun2/archive/%s.tar.gz" % version
+version = 'v1.2.1'
+download_url = "https://github.com/albertyw/pyziptax/archive/%s.tar.gz" % version
 
 setup(
     name='pyziptax',

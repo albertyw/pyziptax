@@ -61,7 +61,9 @@ To update PyPI:
 
 .. code:: shell
 
-    python setup.py sdist upload
+    pip install twine
+    python setup.py sdist bdist_wheel
+    twine upload dist/*
 
 .. |Latest Version| image:: https://img.shields.io/pypi/v/pyziptax.svg
    :target: https://pypi.python.org/pypi/pyziptax/

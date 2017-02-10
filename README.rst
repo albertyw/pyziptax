@@ -1,7 +1,7 @@
 pyziptax
 ========
 
-|Latest Version| |License|
+|Latest Version| |Python Version| |License|
 
 |Codeship Status for albertyw/pyziptax| |Dependency Status| |Code
 Climate|
@@ -67,6 +67,7 @@ To update PyPI:
 
 .. |Latest Version| image:: https://img.shields.io/pypi/v/pyziptax.svg
    :target: https://pypi.python.org/pypi/pyziptax/
+.. |Python Version| image:: https://img.shields.io/pypi/pyversions/pyziptax.svg
 .. |License| image:: https://img.shields.io/pypi/l/pyziptax.svg
    :target: https://pypi.python.org/pypi/pyziptax/
 .. |Codeship Status for albertyw/pyziptax| image:: https://codeship.com/projects/ac619bb0-acba-0132-14f9-4e5346bb67f3/status?branch=master

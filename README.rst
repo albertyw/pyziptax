@@ -72,7 +72,7 @@ To update PyPI:
    :target: https://pypi.python.org/pypi/pyziptax/
 .. |Codeship Status for albertyw/pyziptax| image:: https://codeship.com/projects/ac619bb0-acba-0132-14f9-4e5346bb67f3/status?branch=master
    :target: https://codeship.com/projects/68576
-.. |Dependency Status| image:: https://gemnasium.com/albertyw/pyziptax.svg
-   :target: https://gemnasium.com/albertyw/pyziptax
+.. |Dependency Status| image:: https://pyup.io/repos/github/albertyw/pyziptax/shield.svg
+   :target: https://pyup.io/repos/github/albertyw/pyziptax/
 .. |Code Climate| image:: https://codeclimate.com/github/albertyw/pyziptax/badges/gpa.svg
    :target: https://codeclimate.com/github/albertyw/pyziptax
